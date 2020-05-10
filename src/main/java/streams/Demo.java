@@ -67,5 +67,23 @@ public class Demo {
 		System.out.println("Product with min price");
 		System.out.println(min.toString());
 
+                //Sum in lambda expression
+                int quantitiesTotal = products.stream()
+				.mapToInt(p -> p.getQuantity())
+				.sum();
+		System.out.println("Sum all quantities: " + quantitiesTotal);
+
+		int mobileQuantity = products.stream()
+				.filter(p -> p.getName().startsWith("mobile"))
+				.mapToInt(p -> p.getQuantity())
+				.sum();
+		System.out.println("Sum quantities of mobile starts with mobile: " + mobileQuantity);
+
+		long priceTotal = products.stream()
+				.mapToLong(p -> p.getQuantity() * p.getPrice())
+				.sum();
+		System.out.println("Total: " + priceTotal);
+
+
 	}
 }
