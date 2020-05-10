@@ -85,5 +85,31 @@ public class Demo {
 		System.out.println("Total: " + priceTotal);
 
 
+                //Like operator in lambda expression
+                System.out.println("Search Starts With: mo");
+		products.stream()
+			.filter(p -> p.getName().startsWith("mo"))
+			.forEach(p -> {
+				System.out.println(p.toString());
+				System.out.println("======================");
+			});
+
+		System.out.println("Search Ends With: top 1");
+		products.stream()
+			.filter(p -> p.getName().endsWith("top 1"))
+			.forEach(p -> {
+				System.out.println(p.toString());
+				System.out.println("======================");
+			});
+
+		System.out.println("Search Contains: top");
+		products.stream()
+			.filter(p -> p.getName().contains("top"))
+			.forEach(p -> {
+				System.out.println(p.toString());
+				System.out.println("======================");
+			});
+
+
 	}
 }
