@@ -36,7 +36,37 @@ public class Demo {
 			});
 
  
-                //
+                //GroupingBy
+                System.out.println("Count the number of products in each group");
+		Map group = products.stream()
+				.collect(Collectors.groupingBy(Product::getManufacturer, Collectors.counting()));
+		for(String groupName : group.keySet()) {
+			System.out.println("Group Name: " + groupName);
+			System.out.println("Products: " + group.get(groupName));
+			System.out.println("=====================");
+		}
+
+		System.out.println("Calculate the total number of products in each group");
+		Map calculateGroup = products.stream()
+				.collect(Collectors.groupingBy(Product::getManufacturer, Collectors.summingInt(Product::getQuantity)));
+		for(String groupName : calculateGroup.keySet()) {
+			System.out.println("Group Name: " + groupName);
+			System.out.println("Total number of products: " + calculateGroup.get(groupName));
+			System.out.println("=====================");
+		}
+
+                // Min and Max in Lambda Expression 
+                Product max = products.stream()
+						.max((p1, p2) -> (int) (p1.getPrice() - p2.getPrice()))
+						.get();
+		System.out.println("Product with max price");
+		System.out.println(max.toString());
+
+		Product min = products.stream()
+						.min((p1, p2) -> (int) (p1.getPrice() - p2.getPrice()))
+						.get();
+		System.out.println("Product with min price");
+		System.out.println(min.toString());
 
 	}
 }
