@@ -16,8 +16,7 @@ public class Demo {
                 products.add(new Product("p6", "laptop 4", 3000, 9, "Manufacturer 6"));
 
 
-		// filtering colloctions by using stream
-
+		// filtering collections by using stream
                 System.out.println("Or Condition");
 		products.stream()
 			.filter(p -> p.getId().equalsIgnoreCase("p1")
